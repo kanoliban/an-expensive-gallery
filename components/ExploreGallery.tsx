@@ -920,56 +920,96 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
         )}
       </div>
 
-      {/* Artwork Details Panel (shown when artwork is focused) */}
+      {/* Artwork Details Panel - Museum placard style */}
       {selectedArtwork && (
         <div
           ref={detailsPanelRef}
-          className="fixed right-0 top-0 bottom-0 z-40 w-full max-w-md p-8 flex flex-col justify-center pointer-events-auto"
+          className={`fixed z-40 pointer-events-auto
+            md:right-0 md:top-0 md:bottom-0 md:w-full md:max-w-md md:p-8 md:flex md:flex-col md:justify-center
+            bottom-0 left-0 right-0 p-4 md:left-auto`}
           style={{ opacity: 0 }}
         >
-          <div className={`p-8 ${isDarkMode ? 'bg-[#0a0a0a]/90 backdrop-blur-sm' : 'bg-white/90 backdrop-blur-sm'}`}>
-            {/* Close button */}
+          {/* Desktop: Large panel | Mobile: Small placard */}
+          <div className={`
+            ${isDarkMode ? 'bg-[#0a0a0a]/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'}
+            md:p-8 p-4
+          `}>
+            {/* Close button - desktop only, mobile taps anywhere */}
             <button
               onClick={unfocusArtwork}
-              className={`absolute top-4 right-4 p-2 transition-colors ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}
+              className={`absolute top-2 right-2 md:top-4 md:right-4 p-1.5 md:p-2 transition-colors ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}
               aria-label="Close"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" className="size-4 md:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
 
-            {/* Title */}
-            <h2 className={`text-2xl font-medium italic mb-2 ${isDarkMode ? 'text-white' : 'text-[#0F0F0F]'}`}>
-              {selectedArtwork.title}
-            </h2>
+            {/* Mobile: Horizontal compact layout | Desktop: Vertical */}
+            <div className="md:block flex items-start gap-4">
+              {/* Info section */}
+              <div className="flex-1 min-w-0">
+                {/* Title - smaller on mobile */}
+                <h2 className={`md:text-2xl text-base font-medium italic md:mb-2 mb-0.5 truncate ${isDarkMode ? 'text-white' : 'text-[#0F0F0F]'}`}>
+                  {selectedArtwork.title}
+                </h2>
 
-            {/* Artist */}
-            {(() => {
-              const artist = getArtistById(selectedArtwork.artistId);
-              return artist ? (
-                <p className={`text-sm mb-4 ${isDarkMode ? 'text-white/70' : 'text-[#6B6B6B]'}`}>
-                  {artist.name}
+                {/* Artist */}
+                {(() => {
+                  const artist = getArtistById(selectedArtwork.artistId);
+                  return artist ? (
+                    <p className={`md:text-sm text-xs md:mb-4 mb-1 ${isDarkMode ? 'text-white/70' : 'text-[#6B6B6B]'}`}>
+                      {artist.name}
+                    </p>
+                  ) : null;
+                })()}
+
+                {/* Year & Medium - single line on mobile */}
+                <p className={`md:text-sm text-[10px] md:mb-1 ${isDarkMode ? 'text-white/50' : 'text-[#9B9B9B]'}`}>
+                  <span>{selectedArtwork.year}</span>
+                  <span className="md:hidden"> · </span>
+                  <span className="md:block">{selectedArtwork.medium}</span>
                 </p>
-              ) : null;
-            })()}
 
-            {/* Year & Medium */}
-            <p className={`text-sm mb-1 ${isDarkMode ? 'text-white/50' : 'text-[#9B9B9B]'}`}>
-              {selectedArtwork.year}
-            </p>
-            <p className={`text-sm mb-6 ${isDarkMode ? 'text-white/50' : 'text-[#9B9B9B]'}`}>
-              {selectedArtwork.medium}
-            </p>
+                {/* Price - visible on desktop, hidden on mobile (shown in actions area) */}
+                <p className={`hidden md:block text-lg font-medium tabular-nums mb-8 ${isDarkMode ? 'text-white' : 'text-[#0F0F0F]'}`}>
+                  {formatPrice(selectedArtwork.price, selectedArtwork.currency)}
+                </p>
+              </div>
 
-            {/* Price */}
-            <p className={`text-lg font-medium tabular-nums mb-8 ${isDarkMode ? 'text-white' : 'text-[#0F0F0F]'}`}>
-              {formatPrice(selectedArtwork.price, selectedArtwork.currency)}
-            </p>
+              {/* Mobile: Price + compact actions */}
+              <div className="md:hidden flex flex-col items-end gap-2 shrink-0">
+                <p className={`text-sm font-medium tabular-nums ${isDarkMode ? 'text-white' : 'text-[#0F0F0F]'}`}>
+                  {formatPrice(selectedArtwork.price, selectedArtwork.currency)}
+                </p>
+                <div className="flex gap-2">
+                  <Link
+                    to={`/work/${selectedArtwork.id}`}
+                    className={`px-3 py-1.5 text-xs font-medium transition-all ${
+                      isDarkMode
+                        ? 'bg-white text-black hover:bg-white/90'
+                        : 'bg-[#0F0F0F] text-white hover:bg-[#1a1a1a]'
+                    }`}
+                  >
+                    Details
+                  </Link>
+                  <Link
+                    to="/inquire"
+                    className={`px-3 py-1.5 text-xs font-medium transition-all border ${
+                      isDarkMode
+                        ? 'border-white/30 text-white hover:bg-white/10'
+                        : 'border-[#0F0F0F]/30 text-[#0F0F0F] hover:bg-black/5'
+                    }`}
+                  >
+                    Inquire
+                  </Link>
+                </div>
+              </div>
+            </div>
 
-            {/* Actions */}
-            <div className="flex gap-3">
+            {/* Desktop actions */}
+            <div className="hidden md:flex gap-3">
               <Link
                 to={`/work/${selectedArtwork.id}`}
                 className={`flex-1 py-3 text-center text-sm font-medium transition-all ${
@@ -992,8 +1032,8 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
               </Link>
             </div>
 
-            {/* ESC hint */}
-            <p className={`mt-6 text-xs text-center ${isDarkMode ? 'text-white/30' : 'text-[#9B9B9B]'}`}>
+            {/* ESC hint - desktop only */}
+            <p className={`hidden md:block mt-6 text-xs text-center ${isDarkMode ? 'text-white/30' : 'text-[#9B9B9B]'}`}>
               Press ESC or tap anywhere to close
             </p>
           </div>
