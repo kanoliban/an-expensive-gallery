@@ -1,0 +1,54 @@
+[
+  {
+    "id": "artist-001",
+    "slug": "elena-vasquez",
+    "name": "Elena Vasquez",
+    "birthYear": 1987,
+    "nationality": "Mexican-American",
+    "basedIn": "Los Angeles, CA",
+    "biography": "Elena Vasquez creates large-scale oil paintings that explore the intersection of memory and landscape. Her work draws from her bicultural upbringing, weaving together imagery from both Mexican folk traditions and American suburban life. Vasquez's paintings have been exhibited internationally and are held in private collections across North America and Europe.",
+    "artistStatement": "My work interrogates the boundaries between memory and invention. Each canvas is a territory where the familiar becomes strange, where childhood recollections merge with imagined futures.",
+    "portraitUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&fit=crop",
+    "featured": true,
+    "createdAt": "2024-01-15"
+  },
+  {
+    "id": "artist-002",
+    "slug": "marcus-chen",
+    "name": "Marcus Chen",
+    "birthYear": 1979,
+    "nationality": "American",
+    "basedIn": "Brooklyn, NY",
+    "biography": "Marcus Chen works primarily in bronze and steel, creating sculptures that examine the tension between organic forms and industrial materials. His practice is informed by his background in architecture and his interest in how bodies move through urban space. Chen's work has been featured in public installations across the United States.",
+    "artistStatement": "I am interested in the conversation between weight and lightness, between what endures and what passes. My sculptures are attempts to make visible the forces that shape our physical world.",
+    "portraitUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&fit=crop",
+    "featured": true,
+    "createdAt": "2024-02-01"
+  },
+  {
+    "id": "artist-003",
+    "slug": "ada-okonkwo",
+    "name": "Ada Okonkwo",
+    "birthYear": 1992,
+    "nationality": "Nigerian-British",
+    "basedIn": "London, UK",
+    "biography": "Ada Okonkwo's mixed-media works combine traditional West African textiles with contemporary digital printing techniques. Her practice explores themes of diaspora, identity, and the transmission of cultural knowledge across generations. Okonkwo's work challenges conventional boundaries between craft and fine art.",
+    "artistStatement": "I work at the seam where ancestral knowledge meets contemporary expression. Each piece is a conversation across time, a bridge between what was carried forward and what must be newly made.",
+    "portraitUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&fit=crop",
+    "featured": true,
+    "createdAt": "2024-03-10"
+  },
+  {
+    "id": "artist-004",
+    "slug": "flahn-manly",
+    "name": "Flahn Manly",
+    "birthYear": 1988,
+    "nationality": "Liberian-American",
+    "basedIn": "Minneapolis, MN",
+    "biography": "Flahn Manly is a muralist and painter whose vibrant work transforms public spaces across Minneapolis and beyond. Born in Monrovia, Liberia, Manly immigrated to the United States as a child, an experience that deeply informs his artistic practice. His murals and paintings explore themes of freedom, hope, resilience, and social transformation, often depicting figures in moments of joy and power. Manly is the founder of Renaissance Fire For The Arts, a nonprofit dedicated to empowering emerging artists.",
+    "artistStatement": "Joy is my weapon. In a world that often demands we carry pain, I choose to paint celebration, to make visible the light that persists. My work is an invitation to see ourselves not as we have been defined, but as we choose to become.",
+    "portraitUrl": "/artists/flahn-manly.jpg",
+    "featured": true,
+    "createdAt": "2025-01-14"
+  }
+]

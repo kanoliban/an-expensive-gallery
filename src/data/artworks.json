@@ -1,0 +1,284 @@
+[
+  {
+    "id": "artwork-001",
+    "artistId": "artist-001",
+    "title": "Untitled (Blue Room)",
+    "year": 2024,
+    "medium": "Oil on canvas",
+    "dimensions": { "height": 72, "width": 60, "unit": "in" },
+    "price": 45000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1200&fit=crop",
+        "alt": "Abstract blue painting with geometric forms",
+        "isPrimary": true,
+        "aspectRatio": 1.2
+      }
+    ],
+    "description": "From Vasquez's acclaimed 'Interior Landscapes' series, this work captures the ambiguous space between memory and invention.",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": "artwork-002",
+    "artistId": "artist-001",
+    "title": "Garden at Dusk",
+    "year": 2023,
+    "medium": "Oil on canvas",
+    "dimensions": { "height": 48, "width": 36, "unit": "in" },
+    "price": 28000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200&fit=crop",
+        "alt": "Moody garden scene with warm undertones",
+        "isPrimary": true,
+        "aspectRatio": 1.33
+      }
+    ],
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": "artwork-003",
+    "artistId": "artist-001",
+    "title": "Threshold",
+    "year": 2024,
+    "medium": "Oil on canvas",
+    "dimensions": { "height": 84, "width": 72, "unit": "in" },
+    "price": 62000,
+    "currency": "USD",
+    "status": "sold",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1549887534-1541e9326642?w=1200&fit=crop",
+        "alt": "Large scale abstract with doorway motif",
+        "isPrimary": true,
+        "aspectRatio": 1.17
+      }
+    ],
+    "featured": false,
+    "order": 3
+  },
+  {
+    "id": "artwork-004",
+    "artistId": "artist-002",
+    "title": "Fulcrum I",
+    "year": 2024,
+    "medium": "Bronze",
+    "dimensions": { "height": 36, "width": 24, "depth": 18, "unit": "in" },
+    "price": 85000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=1200&fit=crop",
+        "alt": "Bronze sculpture with organic curves",
+        "isPrimary": true,
+        "aspectRatio": 0.8
+      }
+    ],
+    "description": "The first in Chen's 'Fulcrum' series, exploring equilibrium between opposing forces.",
+    "featured": true,
+    "order": 4
+  },
+  {
+    "id": "artwork-006",
+    "artistId": "artist-003",
+    "title": "Crossing Waters",
+    "year": 2024,
+    "medium": "Mixed media on panel",
+    "dimensions": { "height": 60, "width": 48, "unit": "in" },
+    "price": 32000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=1200&fit=crop",
+        "alt": "Mixed media work with textile elements",
+        "isPrimary": true,
+        "aspectRatio": 1.25
+      }
+    ],
+    "description": "Okonkwo's exploration of the Middle Passage through contemporary and ancestral visual languages.",
+    "featured": true,
+    "order": 6
+  },
+  {
+    "id": "artwork-007",
+    "artistId": "artist-003",
+    "title": "What the Mothers Carried",
+    "year": 2023,
+    "medium": "Wax print fabric, digital print, gold leaf on wood",
+    "dimensions": { "height": 72, "width": 60, "unit": "in" },
+    "price": 48000,
+    "currency": "USD",
+    "status": "on_hold",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1200&fit=crop",
+        "alt": "Layered textile work with gold accents",
+        "isPrimary": true,
+        "aspectRatio": 1.2
+      }
+    ],
+    "featured": true,
+    "order": 7
+  },
+  {
+    "id": "artwork-008",
+    "artistId": "artist-003",
+    "title": "Diaspora Triptych",
+    "year": 2024,
+    "medium": "Mixed media on canvas (three panels)",
+    "dimensions": { "height": 84, "width": 144, "unit": "in" },
+    "price": 95000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=1200&fit=crop",
+        "alt": "Three-panel mixed media work",
+        "isPrimary": true,
+        "aspectRatio": 1.71
+      }
+    ],
+    "featured": true,
+    "order": 8
+  },
+  {
+    "id": "artwork-009",
+    "artistId": "artist-004",
+    "title": "Boy with Hoe",
+    "year": 2023,
+    "medium": "Oil on canvas",
+    "dimensions": { "height": 48, "width": 36, "unit": "in" },
+    "price": 18000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "/artists/flahn-manly-boy-with-hoe.jpeg",
+        "alt": "Painting of a young boy holding a hoe",
+        "isPrimary": true,
+        "aspectRatio": 1.33
+      }
+    ],
+    "description": "A tender portrayal of childhood labor and resilience, rendered in Manly's characteristic vibrant palette.",
+    "featured": true,
+    "order": 9
+  },
+  {
+    "id": "artwork-010",
+    "artistId": "artist-004",
+    "title": "Heir",
+    "year": 2024,
+    "medium": "Acrylic on canvas",
+    "dimensions": { "height": 60, "width": 48, "unit": "in" },
+    "price": 24000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "/artists/flahn-manly-heir.jpeg",
+        "alt": "Portrait depicting inheritance and legacy",
+        "isPrimary": true,
+        "aspectRatio": 1.25
+      }
+    ],
+    "description": "An exploration of legacy, identity, and what we inherit beyond material possessions.",
+    "featured": true,
+    "order": 10
+  },
+  {
+    "id": "artwork-011",
+    "artistId": "artist-004",
+    "title": "Mommy Goes to School",
+    "year": 2024,
+    "medium": "Oil on canvas",
+    "dimensions": { "height": 72, "width": 60, "unit": "in" },
+    "price": 32000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "/artists/flahn-manly-mommy-goes-to-school.jpeg",
+        "alt": "Narrative painting celebrating education and motherhood",
+        "isPrimary": true,
+        "aspectRatio": 1.2
+      }
+    ],
+    "description": "A celebration of perseverance and the pursuit of knowledge across generations.",
+    "featured": true,
+    "order": 11
+  },
+  {
+    "id": "artwork-012",
+    "artistId": "artist-004",
+    "title": "Reign Supreme",
+    "year": 2024,
+    "medium": "Acrylic on canvas",
+    "dimensions": { "height": 60, "width": 48, "unit": "in" },
+    "price": 28000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "/artists/flahn-manly-reign-supreme.jpeg",
+        "alt": "Bold figurative work depicting power and self-determination",
+        "isPrimary": true,
+        "aspectRatio": 1.25
+      }
+    ],
+    "description": "A powerful assertion of sovereignty and self-determination.",
+    "featured": true,
+    "order": 12
+  },
+  {
+    "id": "artwork-013",
+    "artistId": "artist-004",
+    "title": "Brother's Keeper",
+    "year": 2023,
+    "medium": "Oil on canvas",
+    "dimensions": { "height": 48, "width": 48, "unit": "in" },
+    "price": 22000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "/artists/Flahn-manly-studios-portfolio-brothers-keeper.jpg",
+        "alt": "Painting exploring themes of community and mutual care",
+        "isPrimary": true,
+        "aspectRatio": 1.0
+      }
+    ],
+    "description": "An intimate meditation on kinship, responsibility, and collective uplift.",
+    "featured": true,
+    "order": 13
+  },
+  {
+    "id": "artwork-014",
+    "artistId": "artist-004",
+    "title": "Power",
+    "year": 2024,
+    "medium": "Acrylic on canvas",
+    "dimensions": { "height": 72, "width": 48, "unit": "in" },
+    "price": 35000,
+    "currency": "USD",
+    "status": "available",
+    "images": [
+      {
+        "url": "/artists/Flahn-manly-studios-portfolio-power.jpg",
+        "alt": "Dynamic painting embodying strength and agency",
+        "isPrimary": true,
+        "aspectRatio": 1.5
+      }
+    ],
+    "description": "A commanding work that embodies strength, agency, and the transformative potential of self-belief.",
+    "featured": true,
+    "order": 14
+  }
+]

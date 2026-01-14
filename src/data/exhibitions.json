@@ -1,0 +1,28 @@
+[
+  {
+    "id": "exhibition-001",
+    "slug": "thresholds",
+    "title": "Thresholds",
+    "subtitle": "Works on Passage and Transition",
+    "curatorStatement": "The works gathered here share a preoccupation with the liminal—those spaces and moments that exist between states of being. Whether through Vasquez's painted doorways, Chen's sculptures that seem perpetually on the verge of motion, or Okonkwo's textile maps of ancestral crossings, each artist invites us to consider what it means to be in transit, to occupy the threshold between what was and what will be.\n\nThis exhibition is not about arrival. It is about the profound discomfort and possibility of the in-between.",
+    "startDate": "2024-09-15",
+    "endDate": "2024-12-20",
+    "coverImageUrl": "https://images.unsplash.com/photo-1577720643272-265f09367456?w=1200&fit=crop",
+    "artworkIds": ["artwork-001", "artwork-003", "artwork-004", "artwork-006", "artwork-007"],
+    "artistIds": ["artist-001", "artist-002", "artist-003"],
+    "status": "past"
+  },
+  {
+    "id": "exhibition-002",
+    "slug": "joy-is-my-weapon",
+    "title": "Joy Is My Weapon",
+    "subtitle": "New Works by Flahn Manly",
+    "curatorStatement": "In a world that often demands we carry pain as proof of survival, Flahn Manly chooses celebration. His figures—rendered in bold colors and commanding compositions—occupy space with an authority that refuses apology.\n\nFrom the quiet determination of a boy tending earth in 'Boy with Hoe' to the fierce maternal pride of 'Mommy Goes to School,' these works document Black joy not as escapism but as resistance. The children in these paintings know something we often forget: that to be seen flourishing is itself a radical act.\n\nManly's Minneapolis roots and Liberian heritage converge in canvases that feel simultaneously intimate and universal. His subjects look back at you—not asking for permission, but granting it. Permission to hope. Permission to celebrate. Permission to reign.",
+    "startDate": "2025-01-10",
+    "endDate": "2025-04-15",
+    "coverImageUrl": "/artists/Flahn-manly-studios-portfolio-power.jpg",
+    "artworkIds": ["artwork-009", "artwork-010", "artwork-011", "artwork-012", "artwork-013", "artwork-014"],
+    "artistIds": ["artist-004"],
+    "status": "current"
+  }
+]

@@ -1,4 +1,5 @@
 import React, { useRef, useLayoutEffect, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import * as THREE from 'three';
 
@@ -345,20 +346,26 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
         <div ref={contentRef} className="text-center flex flex-col items-center max-w-3xl px-6 pointer-events-auto mix-blend-multiply-normal"> 
           
           <h1 className={`text-[5rem] md:text-[7rem] lg:text-[8rem] leading-[0.85] font-bold tracking-tighter mb-8 transition-colors duration-500 ${isDarkMode ? 'text-white' : 'text-dark'}`}>
-            Clone yourself.
+            An Expensive Gallery
           </h1>
           
           <p className={`text-lg md:text-xl font-normal max-w-lg leading-relaxed mb-10 transition-colors duration-500 ${isDarkMode ? 'text-gray-400' : 'text-muted'}`}>
-            Build the digital version of you to scale your expertise and availability, <span className="text-accent font-medium">infinitely</span>
+            Art. Priced accordingly.
           </p>
 
           <div className="flex items-center gap-6">
-            <button className={`rounded-full px-8 py-3.5 text-sm font-medium hover:scale-105 transition-all duration-300 ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-dark text-white'}`}>
-              Try now
-            </button>
-            <button className={`text-sm font-medium hover:opacity-70 transition-opacity flex items-center gap-1 ${isDarkMode ? 'text-white' : 'text-dark'}`}>
-              See examples <span>→</span>
-            </button>
+            <Link
+              to="/collection"
+              className={`rounded-full px-8 py-3.5 text-sm font-medium hover:scale-105 transition-all duration-300 ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-[#0F0F0F] text-white'}`}
+            >
+              View Collection
+            </Link>
+            <Link
+              to="/artists"
+              className={`text-sm font-medium hover:opacity-70 transition-opacity flex items-center gap-1 ${isDarkMode ? 'text-white' : 'text-[#0F0F0F]'}`}
+            >
+              Meet the Artists <span>→</span>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,34 +1,46 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface NavigationProps {
   isDarkMode: boolean;
   toggleTheme: () => void;
 }
 
+const navLinks = [
+  { label: 'Explore', href: '/explore' },
+  { label: 'Collection', href: '/collection' },
+  { label: 'Artists', href: '/artists' },
+  { label: 'Exhibitions', href: '/exhibitions' },
+  { label: 'About', href: '/about' },
+];
+
 const Navigation: React.FC<NavigationProps> = ({ isDarkMode, toggleTheme }) => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center bg-transparent pointer-events-none">
       {/* Logo */}
-      <div className={`text-lg font-medium tracking-tight pointer-events-auto cursor-pointer flex items-center gap-1 transition-colors duration-500 ${isDarkMode ? 'text-white' : 'text-black'}`}>
-        <span className="font-serif italic text-xl mr-1">⌘</span> Delphi
-      </div>
+      <Link
+        to="/"
+        className={`text-lg font-medium tracking-tight pointer-events-auto cursor-pointer transition-colors duration-500 ${isDarkMode ? 'text-white' : 'text-black'}`}
+      >
+        An Expensive Gallery
+      </Link>
 
       {/* Center Links & Toggle */}
       <div className="hidden md:flex items-center gap-4 bg-white/0 backdrop-blur-[2px] px-6 py-2 rounded-full pointer-events-auto">
         <div className="flex items-center gap-8 mr-4">
-          {['Use Cases', 'Discover', 'About'].map((item) => (
-            <a 
-              key={item} 
-              href="#" 
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
               className={`text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'}`}
             >
-              {item}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </div>
-        
+
         {/* Theme Toggle */}
-        <button 
+        <button
           onClick={toggleTheme}
           className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 ${isDarkMode ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-black/5 hover:bg-black/10 text-black'}`}
           aria-label="Toggle theme"
@@ -43,9 +55,12 @@ const Navigation: React.FC<NavigationProps> = ({ isDarkMode, toggleTheme }) => {
 
       {/* CTA */}
       <div className="pointer-events-auto">
-        <button className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1 group ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-900'}`}>
-          Get started now <span className="group-hover:translate-x-0.5 transition-transform">→</span>
-        </button>
+        <Link
+          to="/inquire"
+          className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1 group ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-900'}`}
+        >
+          Inquire <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+        </Link>
       </div>
     </nav>
   );

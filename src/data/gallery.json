@@ -1,0 +1,15 @@
+{
+  "name": "An Expensive Gallery",
+  "tagline": "Art. Priced accordingly.",
+  "description": "An Expensive Gallery is a curated space for artists whose work deserves to be seen and valued. We represent the unheard of greats—artists whose practice and vision command respect, and whose prices reflect that.",
+  "philosophy": "We do not negotiate. We do not explain. The price is the price. If you are an artist or collector interested in working with us, we welcome your inquiry.",
+  "curatorName": "Flahn Manly",
+  "curatorBio": "Flahn Manly is a Liberian-American artist and muralist based in Minneapolis. Born in Monrovia, Liberia in 1988, his work explores themes of freedom, hope, and social transformation. Through vibrant murals and paintings, he creates visual narratives that celebrate resilience and joy as acts of resistance. He is the founder of Renaissance Fire For The Arts, a nonprofit dedicated to empowering emerging artists.",
+  "contact": {
+    "email": "inquiries@anexpensivegallery.com",
+    "location": "By appointment only"
+  },
+  "socialLinks": {
+    "instagram": "@anexpensivegallery"
+  }
+}
