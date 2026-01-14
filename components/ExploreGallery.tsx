@@ -529,7 +529,7 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
     }
   }, []);
 
-  // Mobile: Touch move (look around)
+  // Mobile: Touch move - horizontal = look, vertical = speed boost
   const handleTouchMove = useCallback((event: TouchEvent) => {
     if (!touchStartRef.current || event.touches.length !== 1) return;
     event.preventDefault();
@@ -538,8 +538,19 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
     const deltaX = touch.clientX - touchStartRef.current.x;
     const deltaY = touch.clientY - touchStartRef.current.y;
 
+    // Horizontal swipes = look left/right (unchanged)
     rotationRef.current.yaw -= deltaX * TOUCH_SENSITIVITY;
-    rotationRef.current.pitch -= deltaY * TOUCH_SENSITIVITY;
+
+    // Vertical swipes = speed boost (swipe up = faster)
+    // Only apply speed boost if not focused on an artwork
+    if (!focusedRef.current) {
+      // Swipe up (negative deltaY) = go faster, swipe down = slow down
+      const speedDelta = -deltaY * 0.002;
+      scrollBoostRef.current = Math.max(0, Math.min(SCROLL_BOOST_SPEED * 1.5, scrollBoostRef.current + speedDelta));
+    }
+
+    // Minimal pitch adjustment (10% of before) so they can still look up/down slightly
+    rotationRef.current.pitch -= deltaY * TOUCH_SENSITIVITY * 0.1;
     rotationRef.current.pitch = Math.max(-MAX_PITCH, Math.min(MAX_PITCH, rotationRef.current.pitch));
 
     touchStartRef.current = { x: touch.clientX, y: touch.clientY };
@@ -903,7 +914,7 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
           <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 text-center transition-opacity duration-500 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
             <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>
               <span className="hidden md:inline">Move mouse to look • WASD to walk • Scroll to speed up • Click artwork to view</span>
-              <span className="md:hidden">Drag to look • Scroll to speed up • Tap artwork to view</span>
+              <span className="md:hidden">Swipe sideways to look • Swipe up to speed up • Tap artwork to view</span>
             </p>
           </div>
         )}
