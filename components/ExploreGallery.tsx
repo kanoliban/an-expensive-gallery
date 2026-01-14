@@ -155,6 +155,8 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [showControls, setShowControls] = useState(true);
+  const [isBoosting, setIsBoosting] = useState(false);
+  const isBoostingRef = useRef(false);
 
   // Configuration
   const TUNNEL_WIDTH = 24;
@@ -529,7 +531,7 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
     }
   }, []);
 
-  // Mobile: Touch move - horizontal = look, vertical = speed boost
+  // Mobile: Touch move (look around)
   const handleTouchMove = useCallback((event: TouchEvent) => {
     if (!touchStartRef.current || event.touches.length !== 1) return;
     event.preventDefault();
@@ -538,19 +540,8 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
     const deltaX = touch.clientX - touchStartRef.current.x;
     const deltaY = touch.clientY - touchStartRef.current.y;
 
-    // Horizontal swipes = look left/right (unchanged)
     rotationRef.current.yaw -= deltaX * TOUCH_SENSITIVITY;
-
-    // Vertical swipes = speed boost (swipe up = faster)
-    // Only apply speed boost if not focused on an artwork
-    if (!focusedRef.current) {
-      // Swipe up (negative deltaY) = go faster, swipe down = slow down
-      const speedDelta = -deltaY * 0.002;
-      scrollBoostRef.current = Math.max(0, Math.min(SCROLL_BOOST_SPEED * 1.5, scrollBoostRef.current + speedDelta));
-    }
-
-    // Minimal pitch adjustment (10% of before) so they can still look up/down slightly
-    rotationRef.current.pitch -= deltaY * TOUCH_SENSITIVITY * 0.1;
+    rotationRef.current.pitch -= deltaY * TOUCH_SENSITIVITY;
     rotationRef.current.pitch = Math.max(-MAX_PITCH, Math.min(MAX_PITCH, rotationRef.current.pitch));
 
     touchStartRef.current = { x: touch.clientX, y: touch.clientY };
@@ -690,9 +681,12 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
       scrollBoostRef.current *= SCROLL_DECAY;
       if (scrollBoostRef.current < 0.001) scrollBoostRef.current = 0;
 
+      // Boost button adds constant speed while held
+      const boostSpeed = isBoostingRef.current ? 0.15 : 0;
+
       // Auto-drift: always world-space -Z (forward in tunnel), independent of where you look
-      // Add scroll boost for faster movement when scrolling
-      const totalSpeed = AUTO_SPEED + scrollBoostRef.current;
+      // Add scroll boost and button boost for faster movement
+      const totalSpeed = AUTO_SPEED + scrollBoostRef.current + boostSpeed;
       const driftZ = isPausedRef.current ? 0 : -totalSpeed;
 
       // WASD: view-relative movement (rotated by yaw)
@@ -911,10 +905,10 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
 
         {/* Controls hint */}
         {showControls && (
-          <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 text-center transition-opacity duration-500 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`absolute bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 text-center transition-opacity duration-500 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
             <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>
               <span className="hidden md:inline">Move mouse to look • WASD to walk • Scroll to speed up • Click artwork to view</span>
-              <span className="md:hidden">Swipe sideways to look • Swipe up to speed up • Tap artwork to view</span>
+              <span className="md:hidden">Drag to look around • Hold boost to speed up • Tap artwork to view</span>
             </p>
           </div>
         )}
@@ -927,6 +921,38 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
                 Paused
               </p>
             </div>
+          </div>
+        )}
+
+        {/* Mobile boost button - hold to speed up */}
+        {!selectedArtwork && (
+          <div className="md:hidden absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-auto">
+            <button
+              onTouchStart={() => {
+                isBoostingRef.current = true;
+                setIsBoosting(true);
+              }}
+              onTouchEnd={() => {
+                isBoostingRef.current = false;
+                setIsBoosting(false);
+              }}
+              onTouchCancel={() => {
+                isBoostingRef.current = false;
+                setIsBoosting(false);
+              }}
+              className={`px-6 py-3 text-sm font-medium transition-all select-none touch-none ${
+                isBoosting
+                  ? isDarkMode
+                    ? 'bg-white text-black'
+                    : 'bg-[#0F0F0F] text-white'
+                  : isDarkMode
+                    ? 'bg-white/20 text-white/80'
+                    : 'bg-black/10 text-black/60'
+              }`}
+              aria-label="Hold to boost speed"
+            >
+              {isBoosting ? 'Boosting...' : 'Hold to Boost'}
+            </button>
           </div>
         )}
       </div>
@@ -945,13 +971,13 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
             ${isDarkMode ? 'bg-[#0a0a0a]/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'}
             md:p-8 p-4
           `}>
-            {/* Close button - desktop only, mobile taps anywhere */}
+            {/* Close button - desktop only, mobile taps anywhere to close */}
             <button
               onClick={unfocusArtwork}
-              className={`absolute top-2 right-2 md:top-4 md:right-4 p-1.5 md:p-2 transition-colors ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}
+              className={`hidden md:block absolute top-4 right-4 p-2 transition-colors ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}
               aria-label="Close"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="size-4 md:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
