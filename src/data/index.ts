@@ -25,7 +25,12 @@ export function getFeaturedArtists(): Artist[] {
 }
 
 export function getAllArtists(): Artist[] {
-  return artists;
+  // Flahn Manly (artist-004) should always appear first
+  return [...artists].sort((a, b) => {
+    if (a.id === 'artist-004') return -1;
+    if (b.id === 'artist-004') return 1;
+    return 0;
+  });
 }
 
 // Artwork queries
@@ -51,7 +56,14 @@ export function getAvailableArtworks(): Artwork[] {
 }
 
 export function getAllArtworks(): Artwork[] {
-  return artworks.sort((a, b) => a.order - b.order);
+  // Sort by order field, with Flahn Manly's works (artist-004) prioritized first
+  return [...artworks].sort((a, b) => {
+    // Flahn's works come first
+    if (a.artistId === 'artist-004' && b.artistId !== 'artist-004') return -1;
+    if (b.artistId === 'artist-004' && a.artistId !== 'artist-004') return 1;
+    // Then sort by order
+    return a.order - b.order;
+  });
 }
 
 // Exhibition queries

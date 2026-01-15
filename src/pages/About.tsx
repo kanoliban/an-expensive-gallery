@@ -9,33 +9,39 @@ const About: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-4xl mx-auto">
-        <header className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+      <div className="max-w-4xl mx-auto md:max-w-2xl">
+        <header className="mb-16 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             About
           </h1>
         </header>
 
         <div className="space-y-16">
-          <section>
+          <section className="text-center">
             <h2 className="text-2xl font-bold tracking-tight mb-6">The Gallery</h2>
-            <p className="text-lg leading-relaxed mb-6">
+            <p className="text-lg leading-relaxed mb-6 text-pretty">
               {gallery.description}
             </p>
-            <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>
+            <p
+              className={`text-lg leading-relaxed italic text-pretty ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}
+              style={{ fontFamily: '"Cormorant Garamond", serif' }}
+            >
               {gallery.philosophy}
             </p>
           </section>
 
-          <section>
+          <section className="text-center">
             <h2 className="text-2xl font-bold tracking-tight mb-6">The Approach</h2>
             <div className="space-y-6 text-lg leading-relaxed">
-              <p>
+              <p className="text-pretty">
                 We show prices because the work has value. No "price on request" —
                 that's a conversation about money disguised as discretion.
                 The number is the number.
               </p>
-              <p className={isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}>
+              <p
+                className={`italic text-pretty ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}
+                style={{ fontFamily: '"Cormorant Garamond", serif' }}
+              >
                 Every artist here was chosen because their work deserves to be seen
                 and valued. Not because of their followers, their gallery representation,
                 or their auction results. Because the work speaks.
@@ -44,18 +50,21 @@ const About: React.FC = () => {
           </section>
 
           {gallery.curatorName && (
-            <section>
+            <section className="text-center">
               <h2 className="text-2xl font-bold tracking-tight mb-6">The Curator</h2>
               <p className="text-2xl font-medium mb-4">{gallery.curatorName}</p>
               {gallery.curatorBio && (
-                <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>
+                <p
+                  className={`text-lg leading-relaxed italic text-pretty ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}
+                  style={{ fontFamily: '"Cormorant Garamond", serif' }}
+                >
                   {gallery.curatorBio}
                 </p>
               )}
             </section>
           )}
 
-          <section>
+          <section className="text-center">
             <h2 className="text-2xl font-bold tracking-tight mb-6">Contact</h2>
             <div className="space-y-4">
               {gallery.contact.email && (
@@ -78,8 +87,11 @@ const About: React.FC = () => {
             </div>
           </section>
 
-          <section className={`pt-8 border-t ${isDarkMode ? 'border-white/10' : 'border-[#e5e5e5]'}`}>
-            <p className={`mb-6 ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>
+          <section className={`pt-8 border-t text-center ${isDarkMode ? 'border-white/10' : 'border-[#e5e5e5]'}`}>
+            <p
+              className={`mb-6 italic text-pretty ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}
+              style={{ fontFamily: '"Cormorant Garamond", serif' }}
+            >
               Interested in a specific work?
             </p>
             <Link

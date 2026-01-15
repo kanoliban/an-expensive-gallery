@@ -1,5 +1,16 @@
 import React, { useEffect, useState, createContext, useContext } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+
+// Scroll to top on route change
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 import Navigation from './components/Navigation';
 import GalleryTunnel from './components/GalleryTunnel';
 import Collection from './src/pages/Collection';
@@ -68,6 +79,7 @@ const App: React.FC = () => {
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           {/* Explore page - full-screen immersive, no navigation */}
           <Route path="/explore" element={<Explore />} />

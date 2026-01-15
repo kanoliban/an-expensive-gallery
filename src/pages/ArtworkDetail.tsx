@@ -60,15 +60,15 @@ const ArtworkDetail: React.FC = () => {
               {artwork.year && <span className="not-italic">, {artwork.year}</span>}
             </h1>
 
-            <div className="space-y-4 mt-8 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-1 gap-4 md:gap-4 mt-6 md:mt-8 mb-8 md:mb-12">
               <div>
                 <span className={`text-sm block mb-1 ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>Medium</span>
-                <span>{artwork.medium}</span>
+                <span className="text-sm md:text-base">{artwork.medium}</span>
               </div>
 
               <div>
                 <span className={`text-sm block mb-1 ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>Dimensions</span>
-                <span>{formatDimensions(artwork.dimensions)}</span>
+                <span className="text-sm md:text-base">{formatDimensions(artwork.dimensions)}</span>
               </div>
 
               <div>
@@ -77,13 +77,21 @@ const ArtworkDetail: React.FC = () => {
                   price={artwork.price}
                   currency={artwork.currency}
                   status={artwork.status}
-                  size="lg"
+                  size="md"
                 />
               </div>
+
+              {artwork.status === 'available' && (
+                <div className="flex items-end md:hidden">
+                  <InquiryButton artworkId={artwork.id} size="md" />
+                </div>
+              )}
             </div>
 
             {artwork.status === 'available' && (
-              <InquiryButton artworkId={artwork.id} size="lg" />
+              <div className="hidden md:block">
+                <InquiryButton artworkId={artwork.id} size="lg" />
+              </div>
             )}
 
             {artwork.status === 'sold' && (

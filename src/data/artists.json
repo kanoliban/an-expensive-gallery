@@ -1,5 +1,18 @@
 [
   {
+    "id": "artist-004",
+    "slug": "flahn-manly",
+    "name": "Flahn Manly",
+    "birthYear": 1988,
+    "nationality": "Liberian-American",
+    "basedIn": "Minneapolis, MN",
+    "biography": "Flahn Manly is a muralist and painter whose vibrant work transforms public spaces across Minneapolis and beyond. Born in Monrovia, Liberia, Manly immigrated to the United States as a child, an experience that deeply informs his artistic practice. His murals and paintings explore themes of freedom, hope, resilience, and social transformation, often depicting figures in moments of joy and power. Manly is the founder of Renaissance Fire For The Arts, a nonprofit dedicated to empowering emerging artists.",
+    "artistStatement": "Joy is my weapon. In a world that often demands we carry pain, I choose to paint celebration, to make visible the light that persists. My work is an invitation to see ourselves not as we have been defined, but as we choose to become.",
+    "portraitUrl": "/artists/flahn-manly.jpg",
+    "featured": true,
+    "createdAt": "2025-01-14"
+  },
+  {
     "id": "artist-001",
     "slug": "elena-vasquez",
     "name": "Elena Vasquez",
@@ -37,18 +50,5 @@
     "portraitUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&fit=crop",
     "featured": true,
     "createdAt": "2024-03-10"
-  },
-  {
-    "id": "artist-004",
-    "slug": "flahn-manly",
-    "name": "Flahn Manly",
-    "birthYear": 1988,
-    "nationality": "Liberian-American",
-    "basedIn": "Minneapolis, MN",
-    "biography": "Flahn Manly is a muralist and painter whose vibrant work transforms public spaces across Minneapolis and beyond. Born in Monrovia, Liberia, Manly immigrated to the United States as a child, an experience that deeply informs his artistic practice. His murals and paintings explore themes of freedom, hope, resilience, and social transformation, often depicting figures in moments of joy and power. Manly is the founder of Renaissance Fire For The Arts, a nonprofit dedicated to empowering emerging artists.",
-    "artistStatement": "Joy is my weapon. In a world that often demands we carry pain, I choose to paint celebration, to make visible the light that persists. My work is an invitation to see ourselves not as we have been defined, but as we choose to become.",
-    "portraitUrl": "/artists/flahn-manly.jpg",
-    "featured": true,
-    "createdAt": "2025-01-14"
   }
 ]
