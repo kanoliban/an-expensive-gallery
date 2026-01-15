@@ -908,7 +908,7 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
           <div className={`absolute bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 text-center transition-opacity duration-500 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
             <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>
               <span className="hidden md:inline">Move mouse to look • WASD to walk • Scroll to speed up • Click artwork to view</span>
-              <span className="md:hidden">Drag to look around • Hold boost to speed up • Tap artwork to view</span>
+              <span className="md:hidden">Drag to look around • Tap Speed Up to go faster • Tap artwork to view</span>
             </p>
           </div>
         )}
@@ -924,23 +924,16 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
           </div>
         )}
 
-        {/* Mobile boost button - hold to speed up */}
+        {/* Mobile boost button - tap to toggle speed */}
         {!selectedArtwork && (
           <div className="md:hidden absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-auto">
             <button
-              onTouchStart={() => {
-                isBoostingRef.current = true;
-                setIsBoosting(true);
+              onClick={() => {
+                const newState = !isBoostingRef.current;
+                isBoostingRef.current = newState;
+                setIsBoosting(newState);
               }}
-              onTouchEnd={() => {
-                isBoostingRef.current = false;
-                setIsBoosting(false);
-              }}
-              onTouchCancel={() => {
-                isBoostingRef.current = false;
-                setIsBoosting(false);
-              }}
-              className={`px-6 py-3 text-sm font-medium transition-all select-none touch-none ${
+              className={`px-6 py-3 text-sm font-medium transition-all select-none ${
                 isBoosting
                   ? isDarkMode
                     ? 'bg-white text-black'
@@ -949,9 +942,9 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
                     ? 'bg-white/20 text-white/80'
                     : 'bg-black/10 text-black/60'
               }`}
-              aria-label="Hold to boost speed"
+              aria-label="Toggle boost speed"
             >
-              {isBoosting ? 'Boosting...' : 'Hold to Boost'}
+              {isBoosting ? 'Slow Down' : 'Speed Up'}
             </button>
           </div>
         )}
