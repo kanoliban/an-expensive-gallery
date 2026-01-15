@@ -521,22 +521,22 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
     }
   }, [focusArtwork, unfocusArtwork]);
 
-  // Mobile: Touch start
+  // Mobile: Touch start (use targetTouches to ignore touches on other elements like boost button)
   const handleTouchStart = useCallback((event: TouchEvent) => {
-    if (event.touches.length === 1) {
+    if (event.targetTouches.length >= 1) {
       touchStartRef.current = {
-        x: event.touches[0].clientX,
-        y: event.touches[0].clientY,
+        x: event.targetTouches[0].clientX,
+        y: event.targetTouches[0].clientY,
       };
     }
   }, []);
 
-  // Mobile: Touch move (look around)
+  // Mobile: Touch move (look around) - use targetTouches to allow boost button + drag simultaneously
   const handleTouchMove = useCallback((event: TouchEvent) => {
-    if (!touchStartRef.current || event.touches.length !== 1) return;
+    if (!touchStartRef.current || event.targetTouches.length < 1) return;
     event.preventDefault();
 
-    const touch = event.touches[0];
+    const touch = event.targetTouches[0];
     const deltaX = touch.clientX - touchStartRef.current.x;
     const deltaY = touch.clientY - touchStartRef.current.y;
 
