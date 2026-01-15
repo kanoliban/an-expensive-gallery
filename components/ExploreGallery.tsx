@@ -908,7 +908,7 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
           <div className={`absolute bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 text-center transition-opacity duration-500 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
             <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-[#6B6B6B]'}`}>
               <span className="hidden md:inline">Move mouse to look • WASD to walk • Scroll to speed up • Click artwork to view</span>
-              <span className="md:hidden">Drag to look around • Tap Speed Up to go faster • Tap artwork to view</span>
+              <span className="md:hidden">Drag to look • Tap artwork to view</span>
             </p>
           </div>
         )}
@@ -924,16 +924,40 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
           </div>
         )}
 
-        {/* Mobile boost button - tap to toggle speed */}
+        {/* Mobile control buttons - bottom right */}
         {!selectedArtwork && (
-          <div className="md:hidden absolute bottom-6 right-6 pointer-events-auto">
+          <div className="md:hidden absolute bottom-6 right-6 pointer-events-auto flex gap-2">
+            {/* Pause/Play */}
+            <button
+              onClick={() => {
+                isPausedRef.current = !isPausedRef.current;
+                setIsPaused(isPausedRef.current);
+              }}
+              className={`size-10 flex items-center justify-center transition-all ${
+                isDarkMode
+                  ? 'bg-white/10 text-white hover:bg-white/20'
+                  : 'bg-black/5 text-[#0F0F0F] hover:bg-black/10'
+              }`}
+              aria-label={isPaused ? 'Play' : 'Pause'}
+            >
+              {isPaused ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="size-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="size-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+                </svg>
+              )}
+            </button>
+            {/* Fast/Slow */}
             <button
               onClick={() => {
                 const newState = !isBoostingRef.current;
                 isBoostingRef.current = newState;
                 setIsBoosting(newState);
               }}
-              className={`px-4 py-2 text-sm font-medium transition-all ${
+              className={`size-10 flex items-center justify-center transition-all ${
                 isBoosting
                   ? isDarkMode
                     ? 'bg-white text-black'
@@ -942,9 +966,11 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
                     ? 'bg-white/10 text-white hover:bg-white/20'
                     : 'bg-black/5 text-[#0F0F0F] hover:bg-black/10'
               }`}
-              aria-label="Toggle boost speed"
+              aria-label={isBoosting ? 'Normal speed' : 'Fast forward'}
             >
-              {isBoosting ? 'Slow' : 'Fast'}
+              <svg xmlns="http://www.w3.org/2000/svg" className="size-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4 18l8.5-6L4 6v12zM13 6v12l8.5-6L13 6z"/>
+              </svg>
             </button>
           </div>
         )}
