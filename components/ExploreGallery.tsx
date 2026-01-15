@@ -882,7 +882,7 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
                 isPausedRef.current = !isPausedRef.current;
                 setIsPaused(isPausedRef.current);
               }}
-              className={`px-4 py-2 text-sm font-medium transition-all ${
+              className={`hidden md:block px-4 py-2 text-sm font-medium transition-all ${
                 isDarkMode
                   ? 'bg-white/10 text-white hover:bg-white/20'
                   : 'bg-black/5 text-[#0F0F0F] hover:bg-black/10'
