@@ -926,25 +926,25 @@ const ExploreGallery: React.FC<ExploreGalleryProps> = ({ isDarkMode, artworks })
 
         {/* Mobile boost button - tap to toggle speed */}
         {!selectedArtwork && (
-          <div className="md:hidden absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-auto">
+          <div className="md:hidden absolute bottom-6 right-6 pointer-events-auto">
             <button
               onClick={() => {
                 const newState = !isBoostingRef.current;
                 isBoostingRef.current = newState;
                 setIsBoosting(newState);
               }}
-              className={`px-6 py-3 text-sm font-medium transition-all select-none ${
+              className={`px-4 py-2 text-sm font-medium transition-all ${
                 isBoosting
                   ? isDarkMode
                     ? 'bg-white text-black'
                     : 'bg-[#0F0F0F] text-white'
                   : isDarkMode
-                    ? 'bg-white/20 text-white/80'
-                    : 'bg-black/10 text-black/60'
+                    ? 'bg-white/10 text-white hover:bg-white/20'
+                    : 'bg-black/5 text-[#0F0F0F] hover:bg-black/10'
               }`}
               aria-label="Toggle boost speed"
             >
-              {isBoosting ? 'Slow Down' : 'Speed Up'}
+              {isBoosting ? 'Slow' : 'Fast'}
             </button>
           </div>
         )}
